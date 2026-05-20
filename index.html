@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swaraj Atelier - Coming Soon</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(
+135deg,
+#F7F2EA 0%,
+#F1EADF 50%,
+#E8DFD2 100%
+);
+overflow:hidden;
+position:relative;
+}
+
+body::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:#8A5A44;
+opacity:.08;
+border-radius:50%;
+filter:blur(120px);
+top:-150px;
+left:-150px;
+}
+
+body::after{
+content:"";
+position:absolute;
+width:450px;
+height:450px;
+background:#5B3A29;
+opacity:.06;
+border-radius:50%;
+filter:blur(130px);
+bottom:-150px;
+right:-150px;
+}
+
+.container{
+position:relative;
+z-index:2;
+text-align:center;
+max-width:1300px;
+padding:40px;
+}
+
+.brand-logo{
+width:95px;
+height:95px;
+margin:0 auto 28px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:rgba(255,255,255,.38);
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.75);
+
+border-radius:50%;
+
+box-shadow:
+0 12px 35px rgba(0,0,0,.05),
+inset 0 1px 1px rgba(255,255,255,.7);
+
+transition:.6s;
+}
+
+.brand-logo:hover{
+transform:translateY(-10px) scale(1.05);
+}
+
+.brand-logo img{
+width:58px;
+height:auto;
+object-fit:contain;
+opacity:.92;
+}
+
+.logo{
+font-size:18px;
+letter-spacing:10px;
+color:#5B3A29;
+margin-bottom:25px;
+font-weight:500;
+}
+
+h1{
+font-size:90px;
+font-weight:700;
+color:#4D2D1F;
+letter-spacing:-3px;
+margin-bottom:15px;
+}
+
+.sub{
+font-size:24px;
+color:#7B5A47;
+margin-bottom:15px;
+}
+
+.date{
+font-size:18px;
+letter-spacing:6px;
+color:#8A6B57;
+margin-bottom:70px;
+}
+
+.timer{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.box{
+width:145px;
+height:165px;
+
+background:rgba(255,255,255,.4);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.7);
+
+border-radius:32px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.05),
+inset 0 1px 1px rgba(255,255,255,.6);
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+transition:.5s;
+}
+
+.box:hover{
+transform:translateY(-12px);
+}
+
+.number{
+font-size:54px;
+font-weight:700;
+color:#5B3A29;
+}
+
+.label{
+margin-top:12px;
+font-size:12px;
+letter-spacing:5px;
+color:#8A6B57;
+}
+
+.footer{
+margin-top:70px;
+font-size:20px;
+font-style:italic;
+color:#7B5A47;
+opacity:.8;
+}
+
+@media(max-width:768px){
+
+.brand-logo{
+width:70px;
+height:70px;
+}
+
+.brand-logo img{
+width:40px;
+}
+
+h1{
+font-size:52px;
+}
+
+.box{
+width:100px;
+height:115px;
+}
+
+.number{
+font-size:32px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="brand-logo">
+<img src="logo.png" alt="Swaraj Atelier Logo">
+</div>
+
+<div class="logo">
+SWARAJ ATELIER
+</div>
+
+<h1>Coming Soon</h1>
+
+<div class="sub">
+Save The Date
+</div>
+
+<div class="date">
+15 AUGUST 2026
+</div>
+
+<div class="timer">
+
+<div class="box">
+<div class="number" id="months">00</div>
+<div class="label">MONTHS</div>
+</div>
+
+<div class="box">
+<div class="number" id="days">00</div>
+<div class="label">DAYS</div>
+</div>
+
+<div class="box">
+<div class="number" id="hours">00</div>
+<div class="label">HOURS</div>
+</div>
+
+<div class="box">
+<div class="number" id="minutes">00</div>
+<div class="label">MINUTES</div>
+</div>
+
+<div class="box">
+<div class="number" id="seconds">00</div>
+<div class="label">SECONDS</div>
+</div>
+
+</div>
+
+<div class="footer">
+Wear Your Freedom.
+</div>
+
+</div>
+
+<script>
+
+const launchDate=new Date("August 15, 2026 00:00:00")
+
+function updateCountdown(){
+
+const now=new Date()
+
+let years=
+launchDate.getFullYear()-now.getFullYear()
+
+let months=
+launchDate.getMonth()-now.getMonth()
+
+months+=years*12
+
+const diff=launchDate-now
+
+const days=
+Math.floor(
+diff%(1000*60*60*24*30)/(1000*60*60*24)
+)
+
+const hours=
+Math.floor(
+(diff%(1000*60*60*24))/(1000*60*60)
+)
+
+const minutes=
+Math.floor(
+(diff%(1000*60*60))/(1000*60)
+)
+
+const seconds=
+Math.floor(
+(diff%(1000*60))/1000
+)
+
+document.getElementById("months").innerText=
+String(months).padStart(2,"0")
+
+document.getElementById("days").innerText=
+String(days).padStart(2,"0")
+
+document.getElementById("hours").innerText=
+String(hours).padStart(2,"0")
+
+document.getElementById("minutes").innerText=
+String(minutes).padStart(2,"0")
+
+document.getElementById("seconds").innerText=
+String(seconds).padStart(2,"0")
+
+}
+
+setInterval(updateCountdown,1000)
+
+updateCountdown()
+
+</script>
+
+</body>
+</html>
